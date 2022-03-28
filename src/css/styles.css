@@ -74,3 +74,56 @@ body {
 .TelaFilme .container-filmes .filme .moldura img {
     height: 100%;
 }
+
+.TelaSessao {
+    margin-top: 67px;
+}
+
+.TelaSessao>p {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #293845;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+}
+
+.TelaSessao .dia-horarios {
+    padding-left: 24px;
+    margin-bottom: 23px;
+}
+
+.TelaSessao .dia-horarios>p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.02em;
+    color: #293845;
+    margin-bottom: 22px;
+}
+
+.TelaSessao .container-horarios {
+    display: flex;
+    justify-content: left;
+}
+
+.TelaSessao .container-horarios .horario {
+    margin-right: 10px;
+    width: 83px;
+    height: 43px;
+    background-color: #E8833A;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TelaSessao .container-horarios .horario p {
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+}

@@ -1,5 +1,7 @@
 export default function TelaAssento(){
     return (
-        <h1>testando a tela assento</h1>
+        <div class="TelaAssento">
+            <p>Selecione o(s) assento(s)</p>
+        </div>
     );
 }

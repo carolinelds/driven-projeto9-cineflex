@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import FooterSimples from "./FooterSimples";
 
 
 export default function TelaSessao() {
@@ -51,6 +52,7 @@ export default function TelaSessao() {
                     })
                 }
             </div>
+            <FooterSimples idFilme={idFilme}/>
         </div>
     ) : <p>Carregando...</p>
 }

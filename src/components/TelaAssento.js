@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import LegendaAssentos from "./LegendaAssentos";
 import FormsComprador from "./FormsComprador";
+import FooterCompleto from "./FooterCompleto";
 
 export default function TelaAssento() {
     const { idSessao } = useParams();
     const [assentos, setAssentos] = useState(null);
     const [selecionados, setSelecionados] = useState([]);
-    //let titulo = assentos.movie.title;
-    //let poster = assentos.movie.posterURL;
-    //let diaSemana = assentos.day.weekday;
-    //let diaMes = assentos.day.date;
-    //let horario = assentos.name;
+    const [titulo, setTitulo] = useState("");
+    const [poster, setPoster] = useState("");
+    const [diaSemana, setDiaSemana] = useState("");
+    const [horario, setHorario] = useState("");
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
@@ -20,6 +20,10 @@ export default function TelaAssento() {
             const { data } = response;
             //console.log(data);
             setAssentos(data);
+            setTitulo(data.movie.title);
+            setPoster(data.movie.posterURL);
+            setDiaSemana(data.day.weekday);
+            setHorario(data.name);
         });
         promise.catch(err => console.log(err.response.status));
     }, []);
@@ -74,7 +78,13 @@ export default function TelaAssento() {
                 }
             </div>
             <LegendaAssentos />
-            <FormsComprador selecionados={selecionados}/>
+            <FormsComprador selecionados={selecionados} />
+            <FooterCompleto
+                titulo={titulo}
+                poster={poster}
+                diaSemana={diaSemana}
+                horario={horario}
+            />
         </div>
     ) : <div class="TelaAssento">Carregando...</div>
 }

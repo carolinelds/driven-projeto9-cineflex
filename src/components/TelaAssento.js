@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import LegendaAssentos from "./LegendaAssentos";
+import FormsComprador from "./FormsComprador";
 
 export default function TelaAssento() {
     const { idSessao } = useParams();
@@ -73,6 +74,7 @@ export default function TelaAssento() {
                 }
             </div>
             <LegendaAssentos />
+            <FormsComprador selecionados={selecionados}/>
         </div>
     ) : <div class="TelaAssento">Carregando...</div>
 }

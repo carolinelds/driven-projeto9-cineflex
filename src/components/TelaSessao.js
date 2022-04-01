@@ -36,27 +36,23 @@ export default function TelaSessao() {
                                     {
                                         day.showtimes.map(horario => {
                                             const { name } = horario;
-                                            
-                                            
+                                            const idSessao = horario.id;                                            
                                             return (
-                                                <Link to={`/assentos/${horario.id}`} key={horario.id} style={{textDecoration: 'none'}}>
+                                                <Link to={`/assentos/${idSessao}`} key={horario.id} style={{textDecoration: 'none'}}>
                                                     <div class="horario">
                                                         <p>{name}</p>
                                                     </div>
                                                 </Link>
-                                        
                                             );
                                         })
                                     }
                                 </div>
                             </div>
-
                         );
-
                     })
                 }
             </div>
             <FooterSimples idFilme={idFilme} />
         </div>
-    ) : <p>Carregando...</p>
+    ) : <div class="TelaSessao">Carregando...</div>
 }

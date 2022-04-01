@@ -118,7 +118,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .TelaSessao .container-horarios .horario p {
@@ -174,4 +174,87 @@ body {
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.04em;
+}
+
+.TelaAssento .assentos-container {
+    padding-right: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 17px;
+}
+
+.TelaAssento .assentos-container p {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.04em;
+}
+
+.TelaAssento .assento-indisponivel {
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    margin-left: 7px;
+}
+
+.TelaAssento .assento-disponivel {
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    margin-left: 7px;
+}
+
+.TelaAssento .assento-selecionado {
+    background: #8DD7CF;
+    border: 1px solid #1AAE9E;
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+    margin-left: 7px;
+}
+
+.LegendaAssentos {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 56px 0px 56px;
+}
+
+.LegendaAssentos .opcoes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LegendaAssentos .assento-selecionado,
+.LegendaAssentos .assento-disponivel,
+.LegendaAssentos .assento-indisponivel {
+    margin: 5px 0px 5px 0px;
+}
+
+.LegendaAssentos p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.013em;
+    color: #4E5A65;
 }

@@ -324,7 +324,7 @@ body {
     padding-left: 10px;
     position: fixed;
     bottom: 0px;
-    
+
 }
 
 .FooterCompleto .moldura {
@@ -359,4 +359,60 @@ body {
     font-size: 20px;
     line-height: 30px;
     color: #293845;
+}
+
+.TelaSucesso {
+    margin-top: 67px;
+    padding: 0px 29px 0px 29px;
+}
+
+.TelaSucesso h1 {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #247A6B;
+    padding: 25px 70px 40px 70px;
+    text-align: center;
+}
+
+.TelaSucesso h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #293845;
+    margin-bottom: 5px;
+}
+
+.TelaSucesso p {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+    color: #293845;
+}
+
+.TelaSucesso .info {
+    margin-bottom: 35px;
+}
+
+.TelaSucesso button {
+    width: 225px;
+    height: 42px;
+    background: #E8833A;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.TelaSucesso .btn {
+    display: flex;
+    justify-content: center;
 }

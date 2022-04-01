@@ -9,9 +9,11 @@ export default function TelaAssento() {
     const { idSessao } = useParams();
     const [assentos, setAssentos] = useState(null);
     const [selecionados, setSelecionados] = useState([]);
+    const [nomeSelecionados, setNomeSelecionados] = useState([]);
     const [titulo, setTitulo] = useState("");
     const [poster, setPoster] = useState("");
     const [diaSemana, setDiaSemana] = useState("");
+    const [diaMes, setDiaMes] = useState("");
     const [horario, setHorario] = useState("");
 
     useEffect(() => {
@@ -22,22 +24,26 @@ export default function TelaAssento() {
             setAssentos(data);
             setTitulo(data.movie.title);
             setPoster(data.movie.posterURL);
+            setDiaMes(data.day.date);
             setDiaSemana(data.day.weekday);
             setHorario(data.name);
         });
         promise.catch(err => console.log(err.response.status));
     }, []);
 
-    function selecionarAssento(id, isAvailable) {
+    function selecionarAssento(id, name, isAvailable) {
         if (!isAvailable) {
             alert("Esse assento não está disponível.");
         }
         else {
             if (selecionados.includes(id)) {
                 const novoSelecionados = selecionados.filter(el => el !== id);
+                const novoNomeSelecionados = nomeSelecionados.filter(el => el !== name);
                 setSelecionados(novoSelecionados);
+                setNomeSelecionados(novoNomeSelecionados);
             } else {
                 setSelecionados([...selecionados, id]);
+                setNomeSelecionados([...nomeSelecionados, name]);
             }
         }
     }
@@ -70,7 +76,7 @@ export default function TelaAssento() {
                             <div
                                 key={id}
                                 class={classeAssento}
-                                onClick={() => selecionarAssento(id, isAvailable)}>
+                                onClick={() => selecionarAssento(id, name, isAvailable)}>
                                 <p>{name}</p>
                             </div>
                         );
@@ -78,7 +84,13 @@ export default function TelaAssento() {
                 }
             </div>
             <LegendaAssentos />
-            <FormsComprador selecionados={selecionados} />
+            <FormsComprador 
+                selecionados={selecionados}
+                nomeSelecionados={nomeSelecionados}
+                titulo={titulo}
+                diaMes={diaMes}
+                horario={horario}
+            />
             <FooterCompleto
                 titulo={titulo}
                 poster={poster}

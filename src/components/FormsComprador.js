@@ -3,12 +3,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import NameContext from "./../contexts/NameContext";
 import CpfContext from "./../contexts/CpfContext";
+import DadosCompraContext from "../contexts/DadosCompraContext";
 
 export default function FormsComprador(props) {
 
-    const selecionados = props;
+    const { selecionados, nomeSelecionados, titulo, diaMes, horario } = props;
     const { setName } = useContext(NameContext);
     const { setCpf } = useContext(CpfContext);
+    const { setDadosCompra } = useContext(DadosCompraContext);
 
     const [nomeComprador, setNomeComprador] = useState("");
     const [cpfComprador, setCpfComprador] = useState("");
@@ -16,30 +18,31 @@ export default function FormsComprador(props) {
     function reservarAssentos(event) {
         event.preventDefault();
 
-        if (selecionados.length >= 1) {
-            console.log(selecionados);
-            alert("Selecione pelo menos um assento para prosseguir.");
-        } else {
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
+            ids: selecionados,
+            name: nomeComprador,
+            cpf: cpfComprador
+        });
+        promise.then((response) => {
+            const { data } = response;
+            console.log(data);
+            setName(nomeComprador);
+            setCpf(cpfComprador);
+            setDadosCompra({
+                titulo: titulo,
+                diaMes: diaMes,
+                horario: horario,
+                assentosComprados: nomeSelecionados
+            });
+            mudarPagina();
 
-            const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
-                ids: selecionados,
-                name: nomeComprador,
-                cpf: cpfComprador
-            });
-            promise.then((response) => {
-                const { data } = response;
-                console.log(data);
-                setName(nomeComprador);
-                setCpf(cpfComprador);
-                mudarPagina();
+        });
+        promise.catch(err => {
+            console.log(err.status)
+            setNomeComprador("");
+            setCpfComprador("");
+        });
 
-            });
-            promise.catch(err => {
-                console.log(err.status)
-                setNomeComprador("");
-                setCpfComprador("");
-            });
-        }
     }
 
     let navigate = useNavigate();
